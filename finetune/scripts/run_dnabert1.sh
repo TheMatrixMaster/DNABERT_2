@@ -13,14 +13,14 @@ do
     for data in H3 H3K14ac H3K36me3 H3K4me1 H3K4me2 H3K4me3 H3K79me3 H3K9ac H4 H4ac
     do
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/EMP/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_EMP_${data}_seed${seed} \
             --model_max_length 512 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 16 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 4 \
             --learning_rate 3e-5 \
             --num_train_epochs 3 \
             --fp16 \
@@ -40,14 +40,14 @@ do
     for data in prom_core_all prom_core_notata
     do
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/prom/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_prom_${data}_seed${seed} \
             --model_max_length 80 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 16 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 4 \
             --learning_rate 3e-5 \
             --num_train_epochs 4 \
             --fp16 \
@@ -67,14 +67,14 @@ do
     for data in prom_core_tata
     do
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/prom/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_prom_${data}_seed${seed} \
             --model_max_length 80 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 16 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 4 \
             --learning_rate 3e-5 \
             --num_train_epochs 10 \
             --fp16 \
@@ -93,14 +93,14 @@ do
     for data in prom_300_all prom_300_notata
     do
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/prom/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_prom_${data}_seed${seed} \
             --model_max_length 310 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 16 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 4 \
             --learning_rate 3e-5 \
             --num_train_epochs 4 \
             --fp16 \
@@ -120,14 +120,14 @@ do
     for data in prom_300_tata
     do
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/prom/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_prom_${data}_seed${seed} \
             --model_max_length 310 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 16 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 4 \
             --learning_rate 3e-5 \
             --num_train_epochs 10 \
             --fp16 \
@@ -146,14 +146,14 @@ do
     for data in reconstructed
     do
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/splice/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_splice_${data}_seed${seed} \
             --model_max_length 410 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 16 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 4 \
             --learning_rate 3e-5 \
             --num_train_epochs 5 \
             --fp16 \
@@ -173,14 +173,14 @@ do
     for data in covid
     do
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/virus/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_virus_${data}_seed${seed} \
             --model_max_length 1024 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 8 \
-            --gradient_accumulation_steps 4 \
+            --gradient_accumulation_steps 8 \
             --learning_rate 3e-5 \
             --num_train_epochs 9 \
             --fp16 \
@@ -200,14 +200,14 @@ do
     for data in 0 1 2 3 4
     do 
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/mouse/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_mouse_${data}_seed${seed} \
             --model_max_length 110 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 64 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 4 \
             --learning_rate 3e-5 \
             --num_train_epochs 5 \
             --max_steps 1000 \
@@ -228,14 +228,14 @@ do
     for data in 0 1 2 3 4
     do 
         python train.py \
-            --model_name_or_path zhihan1996/DNA_bert_${kmer} \
+            --model_name_or_path models/DNA_bert_${kmer} \
             --data_path  ${data_path}/GUE/tf/$data \
             --kmer ${kmer} \
             --run_name DNABERT1_${kmer}_tf_${data}_seed${seed} \
             --model_max_length 110 \
-            --per_device_train_batch_size 8 \
+            --per_device_train_batch_size 32 \
             --per_device_eval_batch_size 64 \
-            --gradient_accumulation_steps 1 \
+            --gradient_accumulation_steps 4 \
             --learning_rate 3e-5 \
             --num_train_epochs 3 \
             --fp16 \

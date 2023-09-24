@@ -65,6 +65,22 @@ GUE is a comprehensive benchmark for genome understanding consising of $28$ dist
 
 
 
+## 3.1 Compute Canada Setup
+
+    # Load python/3.8 module with pyarrow dependency
+    module purge
+    module load gcc/9.3.0 arrow/8 python/3.8
+
+    # Create virtual environment and activate it
+    virtualenv --no-download py38
+    source py38/bin/activate
+
+    # Install dependencies
+    pip install -r requirements.txt
+
+    # (optional if you would like to use flash attention)
+    # install triton from pip
+    pip install triton
 
 
 ## 4. Quick Start

@@ -136,14 +136,16 @@ class SupervisedDataset(Dataset):
         
         if kmer != -1:
             # only write file on the first process
-            if torch.distributed.get_rank() not in [0, -1]:
-                torch.distributed.barrier()
+            # torch.distributed.init_process_group()
+
+            # if torch.distributed.get_rank() not in [0, -1]:
+            #     torch.distributed.barrier()
 
             logging.warning(f"Using {kmer}-mer as input...")
             texts = load_or_generate_kmer(data_path, texts, kmer)
 
-            if torch.distributed.get_rank() == 0:
-                torch.distributed.barrier()
+            # if torch.distributed.get_rank() == 0:
+            #     torch.distributed.barrier()
 
         output = tokenizer(
             texts,
@@ -295,8 +297,6 @@ def train():
         os.makedirs(results_path, exist_ok=True)
         with open(os.path.join(results_path, "eval_results.json"), "w") as f:
             json.dump(results, f)
-
-
 
 
 if __name__ == "__main__":
