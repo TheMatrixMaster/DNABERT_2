@@ -3,3 +3,6 @@
 models/*
 */wandb/*
 finetune/models
+data
+.ipynb_checkpoints/
+finetune/multilabel_ner_on_atac_seq/runs
